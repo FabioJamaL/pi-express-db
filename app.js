@@ -9,9 +9,14 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var { create } = require('express-handlebars');
+var hbs =  create({ extname: '.hbs' })
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.engine('.hbs', hbs.engine);
+app.set('views', './views');
+app.set('view engine', '.hbs');
+
 
 app.use(logger('dev'));
 app.use(express.json());
