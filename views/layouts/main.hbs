@@ -4,9 +4,16 @@
   <link href="https://bootswatch.com/4/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <title>{{title}}</title>
   <body>
-  {{>header}}
-  {{{body}}}
-  {{>footer}}
+    {{> header}}
+
+    <main>
+      <div class="container">
+        {{{body}}}
+      </div>
+    </main>
+  
+  {{> footer}}
+
   <script src="https://bootswatch.com/4/darkly/bootstrap.min.css"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>

@@ -6,7 +6,7 @@ var alunos = require('../tests/mocks/alunos.json');
 router.get('/', function (_req, res, next) {
     const data = {
         title: 'Alunos', 
-        alunos: mockData.content
+        alunos: alunos
     };
 
     res.render('list', data);
