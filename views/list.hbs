@@ -1,3 +1,12 @@
 <h1>{{title}}</h1>
 
-<ul></ul>
+{{#each alunos.content}}
+
+<ul>
+    <li><b>Nome:</b>{{nome}}</li>
+    <li><b>Matricula::</b>{{matricula}}</li>
+    <li><b>Data de nascimento:</b>{{data_nascimento}}</li>
+    <li><b>endereço de email:</b>{{email}}</li>
+</ul>
+
+{{/each}}
