@@ -2,12 +2,13 @@
 
 {{#each alunos.content}}
 
-<ul>
+
     <li><b>Nome:</b><a href="/alunos/{{matricula}}">{{nome}}</a></li>
     <li><b>Matricula::</b>{{matricula}}</li>
     <li><b>Data de nascimento:</b>{{data_nascimento}}</li>
     <li><b>endereço de email:</b>{{email}}</li>
+    <li><a href="/alunos/edit/{{matricula}}">Editar</a></li>
 </ul>
 
 {{/each}}
-<a href="/alunos/new>">Adicionar aluno:</a>
+<a href="/alunos/new>">
