@@ -16,7 +16,7 @@ router.get('/', function (_req, res, next) {
 router.get('/new', function (req, res, next) {
 
 
-    res.render('card', { title: 'Novo aluno', Buttontext: 'Adicionar' });
+    res.render('form', { title: 'Novo aluno', Buttontext: 'Adicionar' });
 
 });
 
