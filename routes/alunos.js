@@ -16,7 +16,7 @@ router.get('/', function (_req, res, next) {
 router.get('/new', function (req, res, next) {
 
 
-    res.render('form', { title: 'Novo aluno', Buttontext: 'Adicionar' });
+    res.render('form', { title: 'Novo aluno', Buttontext: 'Adicionar aluno', aluno });
 
 });
 
@@ -28,6 +28,13 @@ router.get('/:matricula', function (req, res, next) {
 
 });
 
+router.get('/edit/:matricula', function (req, res, next) {
+    const { matricula } = req.params;
+    const aluno = alunos.content[matricula];
 
+    res.render('card', { title: 'Detalhes do Aluno', aluno });
+    res.render('form', { title: 'Editar aluno', Buttontext: 'Salvar alterações', aluno });
+
+});
 
 module.exports = router;
