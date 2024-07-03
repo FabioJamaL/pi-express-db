@@ -11,4 +11,14 @@ router.get('/', function (_req, res, next) {
 
     res.render('list', data);
 });
+
+router.get('/:matricula', function (req, res, next) {
+    const { matricula } = req.params;
+    const aluno = alunos.content[matricula];
+
+    res.render('card', { title: 'Detalhes do Aluno', aluno });
+
+});
+
+
 module.exports = router;
