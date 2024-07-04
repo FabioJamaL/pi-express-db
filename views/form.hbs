@@ -1,28 +1,27 @@
-<h1>{{<title>}}</title>
-</h1>
+<h1>{{title}}</h1>
 
-<form action="">
+<form action="/alunos/create" method="POST">
 
     <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Nome</label>
-        <input type="text" class="form-control" value="{{aluno.nome}}">
+        <input type="text" name="Nome" class="form-control" value="{{aluno.nome}}">
     </div>
 
     <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Matricula</label>
-        <input type="text" class="form-control" value="{{aluno.matricula}}">
+        <input type="text" name="Matricula" class="form-control" value="{{aluno.matricula}}">
     </div>
 
     <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Data de nascimento</label>
-        <input type="text" class="form-control" value="{{aluno.data_nascimento}}">
+        <input type="text" name="Data de nascimento" class="form-control" value="{{aluno.data_nascimento}}">
     </div>
 
     <div class="mb-3">
         <label for="formGroupExampleInput2" class="form-label">Endereço de E-mail</label>
-        <input type="text" class="form-control" value="{{aluno.email}}">
+        <input type="text" name="E-mail" class="form-control" value="{{aluno.email}}">
     </div>
-    
+
     <input type="submit" name="submit" id="submit" value="Criar aluno">
 
 </form>

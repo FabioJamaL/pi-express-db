@@ -1,10 +1,11 @@
+{{>breadcrumb}}
 <h1>{{title}}</h1>
-<ul>
+{{!-- <ul>
   <li>{{aluno.nome}}</li>
   <li>{{aluno.email}}</li>
   <li>{{aluno.matricula}}</li>
   <li>{{aluno.data_nascimento}}</li>
-</ul>
+</ul> --}}
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">{{aluno.nome}}</h5>
@@ -13,8 +14,8 @@
     </p>
     <a href="{{aluno.data_nascimento}}" class="card-link">Data de Nascimento</a>
     <a href="{{aluno.matricula}}" class="card-link">Matricula</a>
-    <a href="#" class="card-link">Remover</a>
-    <a href="#" class="card-link">Editar</a>
+    <a href="#" class="card-link">Remover  </a><i class="bi bi-trash"></i>
+    <a href="#" class="card-link">Editar  </a><i class="bi bi-pencil-square"></i>
 
   </div>
 </div>

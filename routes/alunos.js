@@ -23,6 +23,22 @@ router.get("/new", function (req, res, next) {
 router.get("/edit/:matricula", function (req, res, next) {
     const { matricula } = req.params;
     const aluno = alunos.content[matricula];
-    res.render("form", { title: "Editar Aluno", buttonText: "Salvar Alterações",aluno });
+    res.render("form", { title: "Editar Aluno", buttonText: "Salvar Alterações", aluno });
 });
+
+router.post('/create', function (req, res, next) {
+    const novoAluno = req.body;
+    const matricula = novoAluno.matricula;
+
+    alunos.content[matricula] = {
+        ...novoAluno
+        matricula: Number(matricula),
+        extra: 'propriedade extra'
+    };
+
+    res.send(alunos);
+});
+
+
+
 module.exports = router;
