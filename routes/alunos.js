@@ -1,40 +1,28 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var alunos = require('../tests/mocks/alunos.json');
-const { Button } = require('bootstrap');
-
+var alunos = require("../tests/mocks/alunos.json");
 /* GET home page. */
-router.get('/', function (_req, res, next) {
+router.get("/", function (req, res, next) {
     const data = {
-        title: 'Alunos', 
-        alunos: alunos
+        title: "Alunos",
+        alunos: alunos,
     };
-
-    res.render('list', data);
+    res.render("list", data);
 });
-
-router.get('/new', function (req, res, next) {
-
-
-    res.render('form', { title: 'Novo aluno', Buttontext: 'Adicionar aluno', aluno });
-
+router.get("/new", function (req, res, next) {
+    res.render("form", { title: "Novo Aluno", buttonText: "Adicionar Aluno" });
 });
-
-router.get('/:matricula', function (req, res, next) {
+router.get("/:matricula", function (req, res, next) {
     const { matricula } = req.params;
     const aluno = alunos.content[matricula];
-
-    res.render('card', { title: 'Detalhes do Aluno', aluno });
-
+    res.render("card", { title: "Detalhe do Aluno", aluno });
 });
-
-router.get('/edit/:matricula', function (req, res, next) {
+router.get("/new", function (req, res, next) {
+    res.render("form", { title: "Novo Aluno", buttonText: "Adicionar Aluno" });
+});
+router.get("/edit/:matricula", function (req, res, next) {
     const { matricula } = req.params;
     const aluno = alunos.content[matricula];
-
-    res.render('card', { title: 'Detalhes do Aluno', aluno });
-    res.render('form', { title: 'Editar aluno', Buttontext: 'Salvar alterações', aluno });
-
+    res.render("form", { title: "Editar Aluno", buttonText: "Salvar Alterações",aluno });
 });
-
 module.exports = router;

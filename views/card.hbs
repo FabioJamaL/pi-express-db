@@ -1,10 +1,20 @@
 <h1>{{title}}</h1>
-
 <ul>
-    
-    <li>{{aluno.nome}}</li>
-    <li>{{aluno.email}}</li>
-    <li>{{aluno.matricula}}</li>
-    <li>{{aluno.data_nascimento}}</li>
-    
+  <li>{{aluno.nome}}</li>
+  <li>{{aluno.email}}</li>
+  <li>{{aluno.matricula}}</li>
+  <li>{{aluno.data_nascimento}}</li>
 </ul>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{aluno.nome}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{aluno.email}}</h6>
+    <p class="card-text">(Campo opcional) Espaço reservado para colocar uma breve descrição do aluno.
+    </p>
+    <a href="{{aluno.data_nascimento}}" class="card-link">Data de Nascimento</a>
+    <a href="{{aluno.matricula}}" class="card-link">Matricula</a>
+    <a href="#" class="card-link">Remover</a>
+    <a href="#" class="card-link">Editar</a>
+
+  </div>
+</div>

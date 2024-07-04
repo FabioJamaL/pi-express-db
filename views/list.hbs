@@ -1,14 +1,24 @@
 <h1>{{title}}</h1>
-
-{{#each alunos.content}}
-
-
-    <li><b>Nome:</b><a href="/alunos/{{matricula}}">{{nome}}</a></li>
-    <li><b>Matricula::</b>{{matricula}}</li>
-    <li><b>Data de nascimento:</b>{{data_nascimento}}</li>
-    <li><b>endereço de email:</b>{{email}}</li>
-    <li><a href="/alunos/edit/{{matricula}}">Editar</a></li>
-</ul>
-
-{{/each}}
-<a href="/alunos/new>">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Matricula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Enderenço de email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each alunos.content}}
+        <tr>
+            <th>{{matricula}}</th>
+            <td><a href="/alunos/{{matricula}}">{{nome}}</a></td>
+            <td>{{data_nascimento}}</td>
+            <td>{{email}}</td>
+            <td><a href="/alunos/edit/{{matricula}}">Editar</a></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<a href="/alunos/new">Adicionar aluno</a>
