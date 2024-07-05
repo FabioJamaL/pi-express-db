@@ -26,6 +26,21 @@ router.get("/edit/:matricula", function (req, res, next) {
     res.render("form", { title: "Editar Aluno", buttonText: "Salvar Alterações", aluno });
 });
 
+router.put('/', function (req, res, next) {
+    
+    res.send(rq.body);
+});
+
+
+router.delete('/', function (req, res, next) {
+    
+    res.send(rq.body);
+});
+
+
+
+
+
 router.post('/create', function (req, res, next) {
     const novoAluno = req.body;
     const matricula = novoAluno.matricula;
