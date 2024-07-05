@@ -31,12 +31,11 @@ router.post('/create', function (req, res, next) {
     const matricula = novoAluno.matricula;
 
     alunos.content[matricula] = {
-        ...novoAluno
-        matricula: Number(matricula),
-        extra: 'propriedade extra'
+        ...novoAluno,
+        matricula: Number(matricula)        
     };
 
-    res.send(alunos);
+    res.redirect(303, '/alunos');
 });
 
 
