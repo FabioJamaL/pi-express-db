@@ -23,14 +23,14 @@ router.get('/edit/:matricula', function(req, res, next) {
     const {matricula} =  req.params;
     const parametro = matricula
     const aluno = alunos.content[matricula];
-    const data = {aluno, metodo: "put", parametro:"create", title: "editar aluno", buttonText: "salvar alteraçoes"}
+    const data = {aluno, metodo: "put", parametro, title: "editar aluno", buttonText: "salvar alteraçoes"}
     res.render('form', data);
 });
 router.post('/', function (req, res, next) {
     const {body, method} = req;
     res.send({body, method});
 });
-router.post('/creat', function(req, res, next) {
+router.post('/create', function(req, res, next) {
     const novoAluno = req.body;
     const matricula = novoAluno.matricula;
     alunos.content[matricula] = {
@@ -40,8 +40,17 @@ router.post('/creat', function(req, res, next) {
     res.redirect('/alunos');
 });
 router.put('/matricula', function (req, res, next) {
-    const {body, method} = req;
-    res.send({body, method, msg:'altera usuario'});
+    //const {body, method} = req;
+    const { matricula } = req.params;
+    const novoAluno = req.body;
+
+    alunos.content[matricula] = {
+        ...novoAluno,
+        matricula: Number(matricula)
+    };
+
+    //res.send({body, method, msg:'altera usuario'});
+    res.redirect('/alunos');
 });
 router.delete('/', function (req, res, next) {
     const {body, method} = req;
