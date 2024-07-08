@@ -37,7 +37,7 @@ router.post('/create', function(req, res, next) {
         ...novoAluno,
         matricula: Number(matricula),
     };
-    res.redirect('/alunos');
+    res.redirect(303, '/alunos');
 });
 router.put('/matricula', function (req, res, next) {
     //const {body, method} = req;
