@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-let alunos = require('../tests/mocks/alunos.json')
+let alunos = require('../../tests/mocks/alunos.json')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     const data = {
@@ -8,11 +8,6 @@ router.get('/', function(req, res, next) {
         alunos: alunos.content
     };
     res.render('list',data)
-});
-router.get('/new', function(_req, res, next) {
-    const{heads: labels} = alunos;
-    const data = {title: 'Novo aluno', parametro:"create", metodo: "post", buttonText: 'Adicionar aluno'}
-    res.render('form', data);
 });
 router.get('/:matricula', function(req, res, next) {
     const {matricula} =  req.params;
@@ -26,7 +21,7 @@ router.get('/edit/:matricula', function(req, res, next) {
     const data = {aluno, metodo: "put", parametro, title: "editar aluno", buttonText: "salvar alteraçoes"}
     res.render('form', data);
 });
-router.post('/create', function(req, res, next) {
+router.post('/', function(req, res, next) {
     const novoAluno = req.body;
     const matricula = novoAluno.matricula;
     alunos.content[matricula] = {
