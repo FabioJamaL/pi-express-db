@@ -1,15 +1,10 @@
-// https://mohammdowais.medium.com/sending-put-and-delete-requests-through-html-f9ffe9e1b6cb
-
 // TODO: Criar testes para o middleware
-
 function overrideHttpMethod(req, _res, next) {
     const { body } = req;
 
     if (typeof body === 'object' && body._method) {
         switch(body._method.toUpperCase()) {
             case 'PUT':
-            case 'POST':
-            case 'PATCH':
             case 'DELETE':
                 req.method = body._method;
                 break;
