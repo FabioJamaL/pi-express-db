@@ -3,24 +3,34 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var bodyParser =require('body-parser')
+var bodyParser = require('body-parser');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var alunosRouter = require('./routes/alunos');
 var usersRouter = require('./routes/users');
+
+var apiAlunosRouter = require('./routes/api/api-alunos');
+
 var httpMethodOverrider = require('./middlewares/http-method-overrider');
 
 var app = express();
+
+// Use CORS middleware
+app.use(cors());
+
+// https://github.com/expressjs/method-override?tab=readme-ov-file#custom-logic
 app.use(bodyParser.urlencoded());
 
-var { create } = require('express-handlebars');
-var hbs =  create({ extname: '.hbs' })
+// Custom Middlewares
+app.use(httpMethodOverrider);  // TODO: Criar testes para este middleware
 
-// view engine setup
-app.engine('.hbs', hbs.engine);
+// View engine Setup
+// https://github.com/ericf/express-handlebars?tab=readme-ov-file#extnamehandlebars
+var hbs = require('./config/config_handlebars');
+app.engine('hbs', hbs.engine);
 app.set('views', './views');
-app.set('view engine', '.hbs');
-
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/alunos', alunosRouter);
-//app.use('/api/v1/alunos', apiAlunosRouter);
+app.use('/api/v1/alunos', apiAlunosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
