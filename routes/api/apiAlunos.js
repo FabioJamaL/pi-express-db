@@ -3,11 +3,7 @@ var router = express.Router();
 let alunos = require('../../tests/mocks/alunos.json')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    const data = {
-        title: 'Alunos',
-        alunos: alunos.content
-    };
-    res.render('list',data)
+    res.status(200).json(alunos);
 });
 router.get('/:matricula', function(req, res, next) {
     const {matricula} =  req.params;
