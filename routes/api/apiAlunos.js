@@ -1,14 +1,35 @@
+const db = require('../../config/config_database');
+//const router = require('express').Router();
+
+//let alunos = require('../../tests/mocks/alunos.json')
+
 var express = require('express');
 var router = express.Router();
-let alunos = require('../../tests/mocks/alunos.json')
-/* GET users listing. */
-router.get('/', function(req, res, next) {
+
+//http://localhost:3000/api/v1/alunos
+
+router.get('/', async function(req, res, next) {
+    const query = 'SELECT * FROM alunos';
+
+    try {
+        const data = await db.any(query);
+        res.status(200).json(data);
+
+    }catch (error) {
+        res.status(400).json({ msg:error.message });
+    }
     res.status(200).json(alunos);
 });
+
 router.get('/:matricula', function(req, res, next) {
     const {matricula} =  req.params;
-    const aluno = alunos.content[matricula];
-    res.render('card',{title:'Detalhe dos alunos', aluno})
+
+    try{
+        const aluno = alunos.content[matricula];
+        res.status(200).json(aluno);
+    }catch (error) {
+        res.status(400).json({msg: error.message});
+    } 
 });
 router.get('/edit/:matricula', function(req, res, next) {
     const {matricula} =  req.params;
