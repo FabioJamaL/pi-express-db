@@ -1,5 +1,5 @@
 //alunos.js
-const { localApi } = require('../config/config_axios')
+const { localApi } = require('../../config/config_axios')
 var express = require('express');
 var router = express.Router();
 const path = require('path')
