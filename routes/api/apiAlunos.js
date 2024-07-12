@@ -12,7 +12,7 @@ router.get('/', async function(req,res,next){
     }
 })
 router.get('/:matricula', async function(req,res,next) {
-    const {matricula} = req.params.matricula;
+    const matricula = req.params.matricula;
     const query = `
     SELECT * 
     FROM alunos 
@@ -21,7 +21,7 @@ router.get('/:matricula', async function(req,res,next) {
 const args = [matricula]
 
     try {
-        const data = await db.any(query,matricula)
+        const data = await db.one(query,matricula)
         res.status(200).json(data);
     } catch (error) {
         res.status(400).json({msg: error.message});
